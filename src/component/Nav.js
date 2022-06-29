@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Login from './Login';
-import Post from "./Post";
-
+import Login from "./Login";
+import PostList from "../pages/PostList";
 import "./Nav.css";
 
 function Nav() {
@@ -14,36 +13,25 @@ function Nav() {
             src="img/bitcoin.png"
             width="35"
             height="35"
-            alt=""
+            alt="asd"
             // 👆 메인 페이지에 판매중인 이미지 띄우기
           />
-          
+
           <div className="logoText">SangbusangJo</div>
-          
         </div>
       </Link>
-      
+
       <div className="headerItems">
         <Link to="/login" component={Login}>
           <div className="headerItem">Login</div>
         </Link>
-<Link to="/post" element={<Post />}>
-        <div>
-          <a className="headerItem">
-            Post
-          </a>
-        </div>
+        <Link to="postlist">
+          <div>
+            <a className="headerItem">Board</a>
+          </div>
         </Link>
-       
 
-        
-
-        <div className="none">
-          
-          
-        </div>
-
-       
+        <div className="none"></div>
       </div>
     </div>
   );

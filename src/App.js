@@ -1,45 +1,50 @@
-import './App.css';
+import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from './component/Login';
-import Main from './component/Main';
-import Nav from './component/Nav' ;
+import Login from "./component/Login";
+import Main from "./component/Main";
+import Nav from "./component/Nav";
+import PostList from "./pages/PostList";
+import PostView from "./pages/PostView";
+import PostWrite from "./pages/PostWrite";
+import PostEdit from "./pages/PostEdit";
+import dummy from "./db/data.json";
 
-import Register from './component/Register';
-import { Component } from 'react';
-import Mypage from './component/Mypage';
+import Register from "./component/Register";
+import { Component } from "react";
+import Mypage from "./component/Mypage";
+
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state= {
+    this.state = {
       isLogin: false,
       accessToken: "",
     };
     this.loginHandler = this.loginHandler.bind(this);
-    this.problemaccessToken = this.problemaccessToken.bind(this)
+    this.problemaccessToken = this.problemaccessToken.bind(this);
   }
   loginHandler(data) {
-    this.setState({ isLogin: true});
+    this.setState({ isLogin: true });
     this.problemaccessToken(data.data.accessToken);
   }
   problemaccessToken(token) {
     this.setState({ accessToken: token });
   }
-  
+
   render() {
     const { isLogin } = this.state;
-  return (
-    
-    
+    return (
       <Router>
-      <Nav></Nav>
-      
+        <Nav />
         {/* 1. Switch -> Routes */}
-
         <Routes>
-        
           {/* 2. component -> element, element형태로 넘겨야함 <Home /> */}
           <Route exact path="/" element={<Main />} />
-          
+          <Route path="/postlist" element={<PostList />} />
+          <Route path="/postview" element={<PostView />} />
+          <Route path="/postwrite" element={<PostWrite />} />
+          <Route path="/postedit" element={<PostEdit />} />
+
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Register />} />
           {/* <Route path="/mypage" element={<Mypage />} /> */}
@@ -55,9 +60,8 @@ class App extends Component {
       )}
         </div>   } */}
         </Routes>
-        
       </Router>
-    
-  );
-}}
+    );
+  }
+}
 export default App;
